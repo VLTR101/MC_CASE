@@ -1,0 +1,2 @@
+﻿<p>Bom dia, envio a lista de carros da categoria #Category#.</p>
+<table><tr><th>Category</th><th>Model</th><th>Model Year</th><th>Manufacturer</th><th>Fuel</th><th>Transmission Type</th></tr>
