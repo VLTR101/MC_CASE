@@ -4,7 +4,7 @@
     <x:Property Name="out_Message" Type="OutArgument(x:String)" />
     <x:Property Name="in_DT_Filtered" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1234,1213</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1874,1395</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,14 +105,14 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Create Email" sap:VirtualizedContainerService.HintSize="572,1148" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence DisplayName="Create Email" sap:VirtualizedContainerService.HintSize="572,1330" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadTextFile File="{x:Null}" Content="[out_Message]" DisplayName="Read Text File" FileName="Data\Input\Message.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap2010:Annotation.AnnotationText="Replace Text in Message with the Category" DisplayName="Replace" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap2010:Annotation.AnnotationText="Replace Text in Message with the Category" DisplayName="Replace" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_Message]</OutArgument>
       </Assign.To>
@@ -125,19 +125,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="List of Vehicles&#xA;" DataTable="[in_DT_Filtered]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,611" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;There will be added: &quot; + in_DT_Filtered.RowCount.ToString + &quot; Rows to the table&quot;]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="List of Vehicles&#xA;" DataTable="[in_DT_Filtered]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,613" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,383" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,385" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap2010:Annotation.AnnotationText="Add new car to the list for the email" DisplayName="Create HTML Row" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap2010:Annotation.AnnotationText="Add new car to the list for the email" DisplayName="Create HTML Row" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[out_Message]</OutArgument>
               </Assign.To>

@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,864</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1874,864</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -261,24 +261,12 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_Vehicles">
-                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="DT_Vehicles" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_User_RPA">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="User_RPA" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="ss:SecureString" x:Key="in_Pass_RPA">
-                            <VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="Pass_RPA" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_InitTime">
-                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="InitTime" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT_Vehicles">[DT_Vehicles]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_User_RPA">[User_RPA]</InArgument>
+                          <InArgument x:TypeArguments="ss:SecureString" x:Key="in_Pass_RPA">[Pass_RPA]</InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_InitTime">[InitTime]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -320,6 +308,27 @@
                             </ActivityAction>
                           </Catch>
                         </TryCatch.Catches>
+                        <TryCatch.Finally>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Report.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Status">
+                                <Literal x:TypeArguments="x:String">OK</Literal>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Message">
+                                <Literal x:TypeArguments="x:String">Success</Literal>
+                              </InArgument>
+                              <InArgument x:TypeArguments="s:DateTime" x:Key="in_InitTime">
+                                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="InitTime" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                              </InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </TryCatch.Finally>
                       </TryCatch>
                     </Sequence>
                   </TryCatch.Try>
@@ -389,6 +398,17 @@
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
+                            <TryCatch.Finally>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Report.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Status">NOK</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Message">[Exception.Message]</InArgument>
+                                  <InArgument x:TypeArguments="s:DateTime" x:Key="in_InitTime">[InitTime]</InArgument>
+                                  <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Finally>
                           </TryCatch>
                         </Sequence>
                       </ActivityAction>
@@ -451,6 +471,17 @@
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
+                            <TryCatch.Finally>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Report.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Status">NOK</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Message">[Exception.Message]</InArgument>
+                                  <InArgument x:TypeArguments="s:DateTime" x:Key="in_InitTime">[InitTime]</InArgument>
+                                  <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Finally>
                           </TryCatch>
                         </Sequence>
                       </ActivityAction>
@@ -718,7 +749,7 @@
                           <Transition.To>
                             <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,120" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="438,500" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -726,7 +757,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\CloseAllApplications.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
                                         <scg:Dictionary x:TypeArguments="x:String, Argument" />
                                       </ui:InvokeWorkflowFile.Arguments>
@@ -761,12 +792,18 @@
                                     </Catch>
                                   </TryCatch.Catches>
                                   <TryCatch.Finally>
-                                    <If Condition="[SystemException IsNot Nothing AndAlso (Config Is Nothing OrElse Convert.ToBoolean(Config(&quot;ShouldMarkJobAsFaulted&quot;)))]" DisplayName="If SystemException IsNot Nothing" sap:VirtualizedContainerService.HintSize="368,272" sap2010:WorkflowViewState.IdRef="If_14">
+                                    <If Condition="[SystemException IsNot Nothing AndAlso (Config Is Nothing OrElse Convert.ToBoolean(Config(&quot;ShouldMarkJobAsFaulted&quot;)))]" DisplayName="If SystemException IsNot Nothing" sap:VirtualizedContainerService.HintSize="368,352" sap2010:WorkflowViewState.IdRef="If_14">
                                       <If.Then>
                                         <TerminateWorkflow DisplayName="Terminate Main Workflow" Exception="[SystemException]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" />
                                       </If.Then>
                                       <If.Else>
-                                        <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_35" />
+                                        <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Sequence>
                                       </If.Else>
                                     </If>
                                   </TryCatch.Finally>
@@ -870,6 +907,7 @@
       <Variable x:TypeArguments="x:String" Name="User_RPA" />
       <Variable x:TypeArguments="ss:SecureString" Name="Pass_RPA" />
       <Variable x:TypeArguments="s:DateTime" Name="InitTime" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_Report" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
